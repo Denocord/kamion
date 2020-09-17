@@ -1,6 +1,6 @@
 #!/bin/sh
 CURL_ARGS="-fsSL "
-GITHUB_API_BASE="https://api.github.com/"
+GITHUB_API_BASE="https://api.github.com"
 
 PR_NAME="Update $UPSTREAM_REPO to $UPSTREAM_REF"
 PR_DESCRIPTION="This pull request updates $UPSTREAM_REPO to $UPSTREAM_REF/commits/$UPSTREAM_REF."
