@@ -9,7 +9,7 @@ PR_BASE_URL="$GITHUB_API_BASE/repos/$GITHUB_REPO_SLUG/pulls"
 PR_ID=$(curl $CURL_ARGS "$PR_BASE_URL?head=$UPDATE_BRANCH" | jq -e ".[0].number")
 
 if [[ $? == 0 ]]; then
-    echo "An update pull request was found already - updating the PR label accordingly."
+    echo "An update pull request exists already - updating the PR label accordingly."
 
 
     REQUEST_BODY=$(

@@ -22,7 +22,7 @@ if [[ $UPSTREAM_REF == $CURRENT_REF ]]; then
     exit 0
 fi
 
-if [[ -n $UPDATE_BRANCH ]]; then
+if [[ -z $UPDATE_BRANCH ]]; then
     UPDATE_BRANCH=$OUTPUT_BRANCH
 fi
 
