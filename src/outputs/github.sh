@@ -1,9 +1,8 @@
 #!/bin/sh
-CURL_ARGS="-fsSL "
 GITHUB_API_BASE="https://api.github.com"
 
 PR_NAME="Update $UPSTREAM_REPO to $UPSTREAM_REF"
-PR_DESCRIPTION="This pull request updates $UPSTREAM_REPO to $UPSTREAM_REF/commits/$UPSTREAM_REF."
+PR_DESCRIPTION="This pull request updates $UPSTREAM_REPO to $UPSTREAM_REPO/commits/$UPSTREAM_REF."
 PR_BASE_URL="$GITHUB_API_BASE/repos/$GITHUB_REPO_SLUG/pulls"
 
 PR_ID=$(curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" "$PR_BASE_URL?head=$UPDATE_BRANCH" | jq -e ".[0].number")
@@ -26,7 +25,9 @@ REQUEST_BODY=$(
     --arg prName "$PR_NAME" \
     --arg prBody "$PR_DESCRIPTION" \
     --arg prHead "$UPDATE_BRANCH" \
-    '{title: $prName, body: $prBody, head: $prHead}'
+    '{title: $prName, body: $prBody, base: $prHead}'
 )
 
-curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d "$REQUEST_BODY" "$PR_BASE_URL"
+echo $REQUEST_BODY
+
+curl -L -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d "$REQUEST_BODY" "$PR_BASE_URL"
