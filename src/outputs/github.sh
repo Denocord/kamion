@@ -24,8 +24,9 @@ REQUEST_BODY=$(
     jq -n \
     --arg prName "$PR_NAME" \
     --arg prBody "$PR_DESCRIPTION" \
-    --arg prHead "$UPDATE_BRANCH" \
-    '{title: $prName, body: $prBody, base: $prHead}'
+    --arg prHead "$OUTPUT_BRANCH" \
+    --arg prBase "$PR_BRANCH" \
+    '{title: $prName, body: $prBody, head: $prHead, base: $prBase}'
 )
 
 echo $REQUEST_BODY
