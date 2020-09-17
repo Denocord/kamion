@@ -43,6 +43,8 @@ echo "Push done!"
 OUTPUT_SCRIPT="$KAMION_BASE/outputs/$KAMION_OUTPUT.sh"
 IS_VALID_DIRECTORY=$(test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs")
 
+echo "Is $OUTPUT_SCRIPT valid? $IS_VALID_DIRECTORY"
+
 if [[ $IS_VALID_DIRECTORY == 0 ]]; then
     echo "Running the $KAMION_OUTPUT output script..."
     . $OUTPUT_SCRIPT
