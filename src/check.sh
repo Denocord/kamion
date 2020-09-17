@@ -36,7 +36,9 @@ echo "Pulling in the updates from $UPDATE_BRANCH at $UPSTREAM_REPO..."
 git pull $ARGS upstream $UPDATE_BRANCH
 
 echo "Pushing the new commits to $CURRENT_REPO..."
-git push -u origin $OUTPUT_BRANCH
+git push -u origin $OUTPUT_BRANCH >/dev/null 2>&1
+
+echo "Push done!"
 
 OUTPUT_SCRIPT="$KAMION_BASE/outputs/$KAMION_OUTPUT.sh"
 IS_VALID_DIRECTORY=$(test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs")
