@@ -4,6 +4,9 @@
 mkdir update
 cd update
 git init
+git config --global pull.rebase false
+git config --global user.name Kamion
+git config --global user.email kamion@tttie.local
 git remote add origin $CURRENT_REPO
 git remote add upstream $UPSTREAM_REPO
 
@@ -36,8 +39,9 @@ git pull $ARGS upstream $UPDATE_BRANCH
 git push -u origin $OUTPUT_BRANCH
 
 OUTPUT_SCRIPT="$KAMION_BASE/outputs/$KAMION_OUTPUT.sh"
+IS_VALID_DIRECTORY=$(test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs")
 
-if [[ test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs" == 0 ]]; then
+if [[ $IS_VALID_DIRECTORY == 0 ]]; then
     . $OUTPUT_SCRIPT
 fi
 
