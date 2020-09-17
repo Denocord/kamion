@@ -27,7 +27,7 @@ fi
 
 ARGS=""
 
-if [[ $UPDATE_METHOD != "rebase" ]] then 
+if [[ $UPDATE_METHOD == "rebase" ]] then 
     ARGS="--rebase"
 fi
 
