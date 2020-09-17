@@ -19,6 +19,7 @@ if [[ $? == 0 ]]; then
         '{title: $prName,body: $prBody}'
     )
     curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "PATCH" -d "$REQUEST_BODY" "$PR_BASE_URL/$PR_ID"
+    exit 0
 fi
 
 REQUEST_BODY=$(
