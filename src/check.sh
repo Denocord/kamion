@@ -36,7 +36,7 @@ echo "Pulling in the updates from $UPDATE_BRANCH at $UPSTREAM_REPO..."
 git pull $ARGS upstream $UPDATE_BRANCH
 
 echo "Pushing the new commits to $CURRENT_REPO..."
-git push -u origin $OUTPUT_BRANCH >/dev/null 2>&1
+git push >/dev/null 2>&1
 
 echo "Push done!"
 
