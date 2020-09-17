@@ -18,7 +18,7 @@ if [[ $? == 0 ]]; then
         --arg prBody "$PR_DESCRIPTION" \
         '{title: $prName,body: $prBody}'
     )
-    curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "PATCH" -d $REQUEST_BODY "$PR_BASE_URL/$PR_ID"
+    curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "PATCH" -d "$REQUEST_BODY" "$PR_BASE_URL/$PR_ID"
 fi
 
 REQUEST_BODY=$(
@@ -29,4 +29,4 @@ REQUEST_BODY=$(
     '{title: $prName, body: $prBody, head: $prHead}'
 )
 
-curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d $REQUEST_BODY "$PR_BASE_URL"
+curl -fsSL -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d "$REQUEST_BODY" "$PR_BASE_URL"
