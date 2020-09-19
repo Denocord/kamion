@@ -3,7 +3,7 @@ GITHUB_API_BASE="https://api.github.com"
 
 PR_NAME="Update $UPSTREAM_REPO to $UPSTREAM_REF"
 UPSTREAM_REPO_URL=$(echo "$UPSTREAM_REPO" | sed -e "s/.git$//")
-CHANGE_LOG="$(git log --pretty="%h: %s - %an" $CURRENT_REF..$UPSTREAM_REF)"
+CHANGE_LOG="$(git log --pretty="- %h: %s - %an" $CURRENT_REF..$UPSTREAM_REF)"
 PR_DESCRIPTION="This pull request updates $UPSTREAM_REPO to $UPSTREAM_REPO_URL/commit/$UPSTREAM_REF.
 $CHANGE_LOG"
 PR_BASE_URL="$GITHUB_API_BASE/repos/$GITHUB_REPO_SLUG/pulls"
