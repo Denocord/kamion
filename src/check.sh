@@ -6,12 +6,12 @@ git config --global pull.rebase false
 git config --global user.name Kamion
 git config --global user.email kamion@tttie.local
 
-echo "Cloning $OUTPUT_BRANCH at $CURRENT_REPO..."
+echo "Cloning upstream repo..."
 git clone -b $OUTPUT_BRANCH $CURRENT_REPO update
 cd update
 git remote add upstream $UPSTREAM_REPO
 
-echo "Fetching new commits from $UPSTREAM_REPO..."
+echo "Fetching new commits..."
 git fetch upstream
 
 export UPSTREAM_REF=$(git rev-parse upstream/$UPDATE_BRANCH)
