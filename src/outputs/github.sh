@@ -33,6 +33,4 @@ REQUEST_BODY=$(
     '{title: $prName, body: $prBody, head: $prHead, base: $prBase}'
 )
 
-echo $REQUEST_BODY
-
-curl -L -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d "$REQUEST_BODY" "$PR_BASE_URL"
+curl -sL -H "Authorization: Bearer $GITHUB_TOKEN" -X "POST" -d "$REQUEST_BODY" "$PR_BASE_URL"
