@@ -40,11 +40,12 @@ git push # >/dev/null 2>&1
 
 echo "Push done!"
 
-OUTPUT_SCRIPT="$KAMION_BASE/outputs/$KAMION_OUTPUT.sh"
+if [[ -n $KAMION_OUTPUT ]]; then
+    OUTPUT_SCRIPT="$KAMION_BASE/outputs/$KAMION_OUTPUT.sh"
 
-test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs"
-if [[ $? == 0 ]]; then
-    echo "Running the $KAMION_OUTPUT output script..."
-    . $OUTPUT_SCRIPT
+    test_directory $OUTPUT_SCRIPT "$KAMION_BASE/outputs"
+    if [[ $? == 0 ]]; then
+        echo "Running the $KAMION_OUTPUT output script..."
+        . $OUTPUT_SCRIPT
+    fi
 fi
-
